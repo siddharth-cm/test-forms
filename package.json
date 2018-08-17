@@ -1,0 +1,24 @@
+{
+  "name": "test-forms",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reach/router": "^1.1.1",
+    "body-parser": "^1.18.3",
+    "cmw-uikit": "git+ssh://git@github.com:capitalmind-tech/cmw-uikit.git",
+    "express": "^4.16.3",
+    "lz-string": "^1.4.4",
+    "pdf-form-utils": "^1.0.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4",
+    "styled-components": "^3.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
