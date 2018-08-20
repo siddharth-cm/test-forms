@@ -2,9 +2,13 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
-const { getFields, generatePDF } = require("pdf-form-utils");
+const { generatePDF, getFields } = require("pdf-form-utils");
 const path = require("path");
 const lzstring = require("lz-string");
+
+const sourcePath = path.resolve(__dirname, `../forms/test.pdf`);
+const destinationPath = path.resolve(__dirname, `../forms/form.filled.pdf`);
+const port = process.env.PORT || 3000;
 
 app.use(
   express.static(
@@ -12,7 +16,6 @@ app.use(
   )
 );
 
-const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 app.get("/form/:data", (req, res, next) => {
@@ -20,11 +23,8 @@ app.get("/form/:data", (req, res, next) => {
   const decodedData = JSON.parse(
     lzstring.decompressFromEncodedURIComponent(data)
   );
-  const sourcePath = path.resolve(__dirname, `../forms/test.pdf`);
-  const destinationPath = path.resolve(__dirname, `../forms/form.filled.pdf`);
-  console.log(sourcePath);
-  console.log(getFields(sourcePath));
-  generatePDF(data, sourcePath, destinationPath, err => {
+  console.log(decodedData);
+  generatePDF(decodedData, sourcePath, destinationPath, err => {
     if (err) {
       next(err);
     } else {

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Applicant from "./components/applicant";
+import Form from "./components/forms/form";
 
 class App extends Component {
   render() {
-    return <Applicant />;
+    return <Form />;
   }
 }
 
